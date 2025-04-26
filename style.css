@@ -89,13 +89,15 @@ body {
 }
 
 .input-container {
-    flex-basis: 50%; /* Adjust basis as needed */
+    flex-basis: 50%;
+    overflow-x: hidden; /* Prevent content from stretching container */
 }
 
 .output-display-container {
-    flex-basis: 50%; /* Adjust basis as needed */
+    flex-basis: 50%;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden; /* Prevent content from stretching container */
 }
 
 h1 {
@@ -196,15 +198,16 @@ select:focus {
 .tag {
     background-color: var(--tag-bg);
     color: var(--tag-text);
-    padding: 4px 10px; /* Adjusted padding */
+    padding: 4px 10px;
     border-radius: 14px;
     font-size: 0.85rem;
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    white-space: nowrap;
+    word-break: break-word; /* Allow long words/tags to break */
     cursor: default;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+    max-width: 100%; /* Prevent tag from exceeding container width */
 }
 
 .tag:hover {
@@ -421,4 +424,57 @@ select:focus {
 .delete-btn:hover {
     background-color: #c62828; /* Darker red */
     transform: scale(1.05);
+}
+
+/* Mode Selector */
+.mode-selector {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+    border: 1px solid var(--input-border);
+    border-radius: 8px;
+    overflow: hidden; /* To contain border-radius */
+}
+
+.mode-btn {
+    flex-grow: 1;
+    padding: 10px 15px;
+    background-color: transparent; /* Button background */
+    color: var(--label-color); /* Button text color */
+    border: none;
+   /* border-right: 1px solid var(--input-border); Remove internal border */
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    text-align: center;
+}
+
+.mode-btn:last-child {
+    border-right: none;
+}
+
+.mode-btn.active {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+}
+
+.mode-btn:not(.active):hover {
+     background-color: var(--tag-container-bg);
+}
+
+.mode-description {
+    font-size: 0.85rem;
+    color: var(--label-color);
+    margin-top: -10px; /* Pull up slightly */
+    margin-bottom: 15px;
+    text-align: center;
+    font-style: italic;
+}
+
+.history-note {
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--placeholder-color);
 } 

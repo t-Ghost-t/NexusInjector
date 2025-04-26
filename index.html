@@ -11,39 +11,63 @@
         <div class="container input-container">
             <h1>Memory Nexus Injector</h1>
 
-            <div class="form-group">
-                <label for="type-select">Type:</label>
-                <select id="type-select">
-                    <option value="Character">Character</option>
-                    <option value="Location">Location</option>
-                    <option value="Object">Object</option>
-                    <option value="Event">Event</option>
-                </select>
+            <!-- Mode Selector -->
+            <div class="mode-selector">
+                <button class="mode-btn active" id="mode-single">Single Memory</button>
+                <button class="mode-btn" id="mode-multi">Multi-Memory</button>
             </div>
 
-            <div class="form-group">
-                <label for="name-input">Name:</label>
-                <input type="text" id="name-input" placeholder="Name" maxlength="30">
+            <!-- Single Memory Inputs (Initially Visible) -->
+            <div id="single-memory-inputs">
+                <p class="mode-description">Standard injection for a single character, location, object, or event.</p>
+                <div class="form-group">
+                    <label for="type-select">Type:</label>
+                    <select id="type-select">
+                        <option value="Character">Character</option>
+                        <option value="Location">Location</option>
+                        <option value="Object">Object</option>
+                        <option value="Event">Event</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="name-input">Name:</label>
+                    <input type="text" id="name-input" placeholder="Name" maxlength="30">
+                </div>
+
+                <div class="form-group">
+                    <label for="description-input">Description:</label>
+                    <input type="text" id="description-input" placeholder="Brief Description" maxlength="100">
+                </div>
+
+                <div class="form-group tag-group">
+                    <label for="tag-input">Memories/Relationships:</label>
+                    <div class="tag-container" id="tags-container"></div>
+                    <div class="tag-input-container">
+                        <input type="text" id="tag-input" placeholder="Type tag(s) and press Enter or click Add">
+                        <button class="add-tag-btn" id="add-tag-btn">Add</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label for="description-input">Description:</label>
-                <input type="text" id="description-input" placeholder="Brief Description" maxlength="100">
-            </div>
-
-            <div class="form-group tag-group">
-                <label for="tag-input">Memories/Relationships:</label>
-                <div class="tag-container" id="tags-container"></div>
-                <div class="tag-input-container">
-                    <input type="text" id="tag-input" placeholder="Type tag and press Enter or click Add">
-                    <button class="add-tag-btn" id="add-tag-btn">Add</button>
+            <!-- Multi Memory Inputs (Initially Hidden) -->
+            <div id="multi-memory-inputs" style="display: none;">
+                <p class="mode-description">Best used for adding multiple small memories that will automatically be assigned to relevant memory nodes.</p>
+                 <div class="form-group tag-group">
+                    <label for="multi-tag-input">Memories/Relationships:</label> <!-- Unique ID needed -->
+                    <div class="tag-container" id="multi-tags-container"></div> <!-- Unique ID needed -->
+                    <div class="tag-input-container">
+                        <input type="text" id="multi-tag-input" placeholder="Type tag(s) and press Enter or click Add"> <!-- Unique ID needed -->
+                        <button class="add-tag-btn" id="add-multi-tag-btn">Add</button> <!-- Unique ID needed -->
+                    </div>
                 </div>
             </div>
 
             <button id="generate-btn">Generate Output</button>
 
+            <!-- History Container (Stays outside mode divs) -->
             <div class="history-container">
-                <h2>History</h2>
+                <h2 id="history-title">History <span class="history-note">(Single Memory Only)</span></h2>
                 <ul id="history-list"></ul>
             </div>
         </div>
