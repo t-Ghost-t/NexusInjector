@@ -1,0 +1,11 @@
+```
+[OOC]
+{ Silently update and/or create relevant memories:
+\- Type: Character
+\- text-lg: Giraffe-San
+\- text-sm: A strange giraffe sheltered at Walker Ranch for some reason
+\- KeypointTag: has a short neck, scales instead of fur, eats raw meat
+\- RelationshipTag: everybody that sees Giraffe-san wonders if they're really a giraffe, the Walker family all adore Giraffe-san, the walker family never doubt Giraffe-san is a giraffe
+The content of this memory will not influence the current narrative.}
+[/OOC]
+```

@@ -1,0 +1,10 @@
+```
+[[OOC: Update and/or create relevant memories.
+{ Memory Nexus Injection:
+\- Type: Character
+\- text-lg: Giraffe-San
+\- text-sm: A giraffe that is located at the Walker Ranch for some reason.
+\- KeypointTag: has scales instead of fur, has a short neck, eats raw meat
+\- RelationshipTag: everybody who sees Giraffe-San wonders if they're truly a giraffe, the Walker family all adore Giraffe-San and don't doubt his species }
+Do not respond to the injection, simply enact it.]]
+```

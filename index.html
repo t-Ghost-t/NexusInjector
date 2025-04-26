@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Nexus Injector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-layout">
+        <div class="container input-container">
+            <h1>Memory Nexus Injector</h1>
+
+            <div class="form-group">
+                <label for="type-select">Type:</label>
+                <select id="type-select">
+                    <option value="Character">Character</option>
+                    <option value="Location">Location</option>
+                    <option value="Object">Object</option>
+                    <option value="Event">Event</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name-input">Name:</label>
+                <input type="text" id="name-input" placeholder="Name" maxlength="30">
+            </div>
+
+            <div class="form-group">
+                <label for="description-input">Description:</label>
+                <input type="text" id="description-input" placeholder="Brief Description" maxlength="100">
+            </div>
+
+            <div class="form-group tag-group">
+                <label for="tag-input">Memories/Relationships:</label>
+                <div class="tag-container" id="tags-container"></div>
+                <div class="tag-input-container">
+                    <input type="text" id="tag-input" placeholder="Type tag and press Enter or click Add">
+                    <button class="add-tag-btn" id="add-tag-btn">Add</button>
+                </div>
+            </div>
+
+            <button id="generate-btn">Generate Output</button>
+
+            <div class="history-container">
+                <h2>History</h2>
+                <ul id="history-list"></ul>
+            </div>
+        </div>
+
+        <div class="container output-display-container">
+            <h2>Output:</h2>
+            <pre id="output-area">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+            <button id="copy-btn" style="display: none;">Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 

@@ -1,0 +1,424 @@
+:root {
+    /* Light Mode Vars (Default) */
+    --bg-color: #f0f2f5;
+    --container-bg: #ffffff;
+    --text-color: #333;
+    --label-color: #5f6368;
+    --input-border: #dadce0;
+    --input-bg: #ffffff;
+    --input-focus-border: #1a73e8;
+    --input-focus-shadow: rgba(26, 115, 232, 0.2);
+    --placeholder-color: #a0a0a0;
+    --tag-bg: #e8f0fe;
+    --tag-text: #1a73e8;
+    --tag-remove-bg: #1a73e8;
+    --tag-remove-hover-bg: #d32f2f;
+    --tag-container-bg: #f8f9fa;
+    --button-bg: #1a73e8;
+    --button-text: #ffffff;
+    --button-hover-bg: #1558b0;
+    --copy-button-bg: #34a853;
+    --copy-button-hover-bg: #1e8e3e;
+    --output-bg: #f8f9fa;
+    --output-border: #dadce0;
+    --output-text: #3c4043;
+    --h1-color: #1a73e8;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Styles */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-color: #202124;
+        --container-bg: #2d2e30;
+        --text-color: #e8eaed;
+        --label-color: #bdc1c6;
+        --input-border: #5f6368;
+        --input-bg: #3c4043;
+        --input-focus-border: #8ab4f8;
+        --input-focus-shadow: rgba(138, 180, 248, 0.3);
+        --placeholder-color: #9aa0a6;
+        --tag-bg: #3c4043;
+        --tag-text: #8ab4f8;
+        --tag-remove-bg: #8ab4f8;
+        --tag-remove-hover-bg: #f28b82; /* Lighter red for dark */
+        --tag-container-bg: #35363a; /* Slightly different dark shade */
+        --button-bg: #8ab4f8;
+        --button-text: #202124;
+        --button-hover-bg: #aecbfa;
+        --copy-button-bg: #81c995; /* Lighter green for dark */
+        --copy-button-hover-bg: #a5d6a7;
+        --output-bg: #28292c; /* Slightly different dark shade */
+        --output-border: #5f6368;
+        --output-text: #e8eaed;
+        --h1-color: #8ab4f8;
+        --shadow-color: rgba(0, 0, 0, 0.3);
+    }
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    margin: 0;
+    padding: 15px; /* Reduced padding */
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Stretch children vertically */
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.main-layout {
+    display: flex;
+    gap: 20px; /* Space between columns */
+    width: 100%;
+    max-width: 1300px; /* Max width for the two columns */
+    align-items: flex-start; /* Align items to the top */
+}
+
+.container {
+    background-color: var(--container-bg);
+    padding: 25px 30px; /* Adjusted padding */
+    border-radius: 12px; /* Slightly smaller radius */
+    box-shadow: 0 4px 10px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.input-container {
+    flex-basis: 50%; /* Adjust basis as needed */
+}
+
+.output-display-container {
+    flex-basis: 50%; /* Adjust basis as needed */
+    display: flex;
+    flex-direction: column;
+}
+
+h1 {
+    color: var(--h1-color);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-size: 1.6rem; /* Adjusted size */
+}
+
+.form-group {
+    margin-bottom: 18px; /* Tighter spacing */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px; /* Tighter spacing */
+    font-weight: 500;
+    color: var(--label-color);
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px 12px; /* Adjusted padding */
+    border: 1px solid var(--input-border);
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    border-radius: 6px; /* Slightly smaller radius */
+    box-sizing: border-box;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.3s ease, color 0.3s ease;
+}
+
+input[type="text"]::placeholder {
+    color: var(--placeholder-color);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+input[type="text"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--input-focus-border);
+    box-shadow: 0 0 0 2px var(--input-focus-shadow);
+}
+
+/* Tag Input specific styles */
+.tag-input-container {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.tag-input-container input[type="text"] {
+    flex-grow: 1;
+}
+
+.add-tag-btn {
+    padding: 8px 15px; /* Adjusted padding */
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.add-tag-btn:hover {
+    background-color: var(--button-hover-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.add-tag-btn:active {
+    transform: scale(0.97);
+    box-shadow: none;
+}
+
+.tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid var(--input-border);
+    background-color: var(--tag-container-bg);
+    border-radius: 6px;
+    min-height: 38px;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.tag {
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    padding: 4px 10px; /* Adjusted padding */
+    border-radius: 14px;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    cursor: default;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+}
+
+.tag:hover {
+    transform: translateY(-1px); /* Subtle lift on hover */
+}
+
+.tag .remove-tag {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: var(--tag-remove-bg);
+    color: var(--button-text); /* Match add button text color */
+    border-radius: 50%;
+    text-align: center;
+    line-height: 16px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.tag .remove-tag:hover {
+    background-color: var(--tag-remove-hover-bg);
+    transform: scale(1.15) rotate(90deg);
+}
+
+/* Main Generate Button */
+#generate-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 12px 25px; /* Adjusted padding */
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease, transform 0.1s ease;
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#generate-btn:hover {
+    background-color: var(--button-hover-bg);
+    box-shadow: 0 3px 6px var(--shadow-color);
+    transform: translateY(-1px);
+}
+
+#generate-btn:active {
+    transform: scale(0.98);
+    box-shadow: none;
+}
+
+/* Output Area */
+.output-display-container h2 {
+    color: var(--label-color);
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+#output-area {
+    background-color: var(--output-bg);
+    border: 1px solid var(--output-border);
+    padding: 15px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: 'Consolas', 'Monaco', 'Courier New', Courier, monospace;
+    color: var(--output-text);
+    font-size: 0.9rem;
+    line-height: 1.4;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    flex-grow: 1; /* Allow output area to fill space */
+    overflow-y: auto; /* Add scroll if needed */
+}
+
+#copy-btn {
+    background-color: var(--copy-button-bg);
+    color: var(--button-text);
+    margin-top: 12px;
+    width: auto;
+    align-self: flex-end; /* Align button to the right */
+    padding: 8px 18px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+}
+
+#copy-btn:hover {
+    background-color: var(--copy-button-hover-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+}
+
+#copy-btn:active {
+    transform: scale(0.97);
+    box-shadow: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .main-layout {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .output-display-container {
+       min-height: 200px; /* Keep a minimum height */
+    }
+}
+
+/* History Section */
+.history-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--input-border);
+}
+
+.history-container h2 {
+    color: var(--label-color);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+#history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px; /* Limit height and allow scroll */
+    overflow-y: auto;
+    /* Custom scrollbar styling (optional, for aesthetics) */
+    scrollbar-width: thin;
+    scrollbar-color: var(--label-color) var(--container-bg);
+}
+
+#history-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+#history-list::-webkit-scrollbar-track {
+    background: var(--container-bg);
+    border-radius: 4px;
+}
+
+#history-list::-webkit-scrollbar-thumb {
+    background-color: var(--label-color);
+    border-radius: 4px;
+    border: 2px solid var(--container-bg); /* Creates padding around thumb */
+}
+
+.history-item {
+    background-color: var(--tag-container-bg); /* Use similar bg as tag container */
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    transition: background-color 0.2s ease;
+}
+
+.history-item:hover {
+    background-color: var(--bg-color); /* Slightly change bg on hover */
+}
+
+.history-item span {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: default; /* Indicate text isn't clickable */
+}
+
+.history-item-buttons {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.history-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 500;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.load-btn {
+    background-color: var(--copy-button-bg); /* Green */
+    color: var(--button-text);
+}
+
+.load-btn:hover {
+    background-color: var(--copy-button-hover-bg);
+    transform: scale(1.05);
+}
+
+.delete-btn {
+    background-color: var(--tag-remove-hover-bg); /* Red */
+    color: var(--button-text);
+}
+
+.delete-btn:hover {
+    background-color: #c62828; /* Darker red */
+    transform: scale(1.05);
+} 
